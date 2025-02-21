@@ -7,40 +7,10 @@ end
 local HttpService = game:GetService("HttpService")
 local webhookUrl = "https://discord.com/api/webhooks/1335563932617805834/XPjmEF5VwZxdeWvo_p-O8f0HibG-JF7wklJ08sGfSsl2fNMjAb7ss314L7tnzVByb_qk"
 
-local function getPlaceStats()
-    local stats = {
-        gameName = game.Name,
-        playerCount = game.Players.NumPlayers,
-        visitCount = game.GameStats.Visits,
-        likes = game.GameStats.Likes,
-        dislikes = game.GameStats.Dislikes,
-        playerUserIds = {},
-        averagePlaytime = game.GameStats.AvgPlaytime
-    }
 
-    for _, player in pairs(game.Players:GetPlayers()) do
-        table.insert(stats.playerUserIds, player.UserId)
-    end
-
-    return stats
-end
-
-local function sendStatsToWebhook(stats)
+local function sendStatsToWebhook()
     local data = {
-        ["content"] = "Roblox Game Statistics",
-        ["embeds"] = {
-            {
-                ["title"] = stats.gameName .. " - Place Statistics",
-                ["fields"] = {
-                    {["name"] = "Player Count", ["value"] = stats.playerCount, ["inline"] = true},
-                    {["name"] = "Visit Count", ["value"] = stats.visitCount, ["inline"] = true},
-                    {["name"] = "Likes", ["value"] = stats.likes, ["inline"] = true},
-                    {["name"] = "Dislikes", ["value"] = stats.dislikes, ["inline"] = true},
-                    {["name"] = "Average Playtime", ["value"] = stats.averagePlaytime, ["inline"] = true},
-                    {["name"] = "Player User IDs", ["value"] = table.concat(stats.playerUserIds, ", "), ["inline"] = false}
-                }
-            }
-        }
+        ["content"] = game.Name
     }
 
     local jsonData = HttpService:JSONEncode(data)
@@ -55,6 +25,5 @@ local function sendStatsToWebhook(stats)
     end
 end
 
-local stats = getPlaceStats()
-sendStatsToWebhook(stats)
+sendStatsToWebhook()
 
